@@ -119,3 +119,50 @@ body {
   border: 1px solid var(--rosa);
   color: var(--rosa);
 }
+.gallery {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  color: #1f3a5f; /* azul pavo */
+  margin-bottom: 30px;
+}
+
+.carousel {
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+}
+
+.carousel img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(240, 182, 200, 0.85); /* rosa */
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.arrow:hover {
+  background: #1f3a5f;
+}
+
+.left {
+  left: -20px;
+}
+
+.right {
+  right: -20px;
+}
