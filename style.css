@@ -166,3 +166,33 @@ body {
 .right {
   right: -20px;
 }
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bienvenida */
+#welcome {
+  background: linear-gradient(135deg, #1f3a5f, #f0b6c8);
+  color: white;
+  text-align: center;
+}
+
+#welcome button {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #1f3a5f;
+  cursor: pointer;
+}
