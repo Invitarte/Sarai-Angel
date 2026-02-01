@@ -1,300 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación A & S</title>
 
 <style>
 :root{
   --azul:#1f2a44;
-  --rosa:#e6c1c7;
-  --gris:#f5f5f5;
+  --rosa:#e6c7c7;
+  --blanco:#ffffff;
 }
 
 body{
   margin:0;
-  min-height:100vh;
-  background:var(--gris);
+  font-family: 'Arial', sans-serif;
+  background: var(--azul);
+  color: var(--blanco);
+  text-align:center;
+  font-size:20px;
+}
+
+/* ---------- PORTADA ---------- */
+.portada{
+  height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  font-family:'Segoe UI', sans-serif;
+  padding:20px;
+}
+
+.portada h1{
+  font-size:48px;
+  letter-spacing:3px;
+}
+
+.portada p{
+  font-size:22px;
+  margin:20px 0;
+}
+
+.btn{
+  background:var(--rosa);
   color:var(--azul);
+  padding:14px 26px;
+  border-radius:14px;
+  text-decoration:none;
+  font-size:20px;
+  margin:10px;
+  display:inline-block;
 }
 
-/* -------- PORTADA -------- */
-#portada{
-  width:360px;
-  background:white;
-  padding:30px;
-  border-radius:22px;
-  text-align:center;
-  box-shadow:0 15px 30px rgba(0,0,0,.1);
-}
-
-#portada h1{
-  font-size:18px;
-  font-weight:300;
-}
-
-#iniciales{
-  font-size:50px;
-  font-weight:600;
-  margin:15px 0;
-}
-
-#btnVer{
-  background:var(--azul);
-  color:white;
-  border:none;
-  padding:12px 30px;
-  border-radius:30px;
-  cursor:pointer;
-  font-size:14px;
-}
-
-/* -------- CALENDARIO -------- */
+/* ---------- CALENDARIO ---------- */
 .calendario{
-  margin-top:25px;
-  font-size:13px;
+  margin-top:20px;
+  background:var(--blanco);
+  color:var(--azul);
+  padding:16px;
+  border-radius:16px;
+  width:260px;
 }
 
 .cal-grid{
   display:grid;
-  grid-template-columns:repeat(7,1fr);
+  grid-template-columns: repeat(7,1fr);
   gap:6px;
   margin-top:10px;
+  font-size:14px;
 }
 
-.cal-grid div{
-  padding:4px 0;
+.dia{
+  padding:6px;
 }
 
-.especial{
-  color:var(--rosa);
-  font-weight:600;
+.evento{
+  color:#c0392b;
+  font-weight:bold;
 }
 
-/* -------- CONTENIDO -------- */
+/* ---------- CUERPO ---------- */
 #contenido{
   display:none;
-  width:360px;
-  background:white;
-  padding:30px;
-  border-radius:22px;
-  box-shadow:0 15px 30px rgba(0,0,0,.1);
+  background:var(--blanco);
+  color:var(--azul);
+  padding:30px 16px;
 }
 
-/* -------- SECCIONES -------- */
 .seccion{
   max-height:0;
   overflow:hidden;
   opacity:0;
-  transform:translateY(25px);
-  transition:all .8s ease;
-  margin-bottom:20px;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  margin-bottom:30px;
 }
 
 .seccion.activa{
-  max-height:600px;
+  max-height:1200px;
   opacity:1;
-  transform:translateY(0);
+  transform: translateY(0);
 }
 
-.titulo{
-  text-align:center;
-  font-weight:600;
-  letter-spacing:1px;
-  margin-bottom:8px;
-}
-
-/* -------- CONTADOR -------- */
+/* ---------- CONTADOR ---------- */
 #contador{
-  text-align:center;
-  font-size:15px;
-  letter-spacing:1px;
+  font-size:22px;
+  margin-top:10px;
 }
 
-#contador strong{
-  font-size:18px;
-  margin:0 2px;
+/* ---------- SLIDER ---------- */
+.slider{
+  position:relative;
+  max-width:360px;
+  margin:auto;
+  height:420px;
+  overflow:hidden;
 }
 
-/* -------- SLIDER -------- */
-.slider {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  margin: auto;
-  overflow: hidden;
-}
-
-.slider img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.slider img.activa {
-  opacity: 1;
-  position: relative;
-}
-
-.flecha{
+.slider img{
   position:absolute;
-  top:45%;
-  background:rgba(31,42,68,.7);
-  color:white;
-  border:none;
-  border-radius:50%;
-  width:32px;
-  height:32px;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 0.6s ease;
+}
+
+.slider img.activa{
+  opacity:1;
+}
+
+.flechas{
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+  font-size:28px;
   cursor:pointer;
 }
 
-.izq{left:8px;}
-.der{right:8px;}
-
-/* -------- BOTONES -------- */
-.boton{
-  background:var(--rosa);
-  color:var(--azul);
-  text-align:center;
-  padding:10px;
-  border-radius:25px;
-  margin-top:8px;
-  text-decoration:none;
-  display:block;
-  font-size:14px;
-  font-weight:500;
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:600px){
+  h1{font-size:40px;}
+  h2{font-size:28px;}
+  p,a{font-size:20px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- -------- PORTADA -------- -->
-<div id="portada">
-  <h1>“El amor nos trajo hasta aquí”</h1>
-  <div id="iniciales">A & S</div>
-  <button id="btnVer" onclick="abrirInvitacion()">Ver invitación</button>
+<!-- PORTADA -->
+<div class="portada" id="portada">
+  <h1>A & S</h1>
+  <p>Con la bendición de Dios,<br>queremos compartir este día contigo</p>
+
+  <a class="btn" onclick="abrirInvitacion()">Ver invitación</a>
 
   <div class="calendario">
     <strong>Mayo 2026</strong>
     <div class="cal-grid">
-      <div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
-      <div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
-      <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
-      <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
-      <div class="especial">❤️ 16</div>
+      <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
+      <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div>3</div>
+      <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+      <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+      <div class="evento">❤️16</div>
+      <div>17</div>
     </div>
   </div>
 </div>
 
-<!-- -------- INVITACIÓN -------- -->
+<!-- CONTENIDO -->
 <div id="contenido">
 
   <div class="seccion">
-    <div class="titulo">NOS CASAMOS</div>
+    <h2>Nos casamos 💍</h2>
   </div>
 
   <div class="seccion">
-    <div class="titulo">CUENTA REGRESIVA</div>
+    <h2>Cuenta regresiva</h2>
     <div id="contador"></div>
   </div>
 
   <div class="seccion">
-    <div class="titulo">Nuestra canción</div>
-    <!-- 🔴 PEGA AQUÍ TU LINK DE SPOTIFY -->
-   <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/76vZt6tHHMOkewURbnGE05?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <h2>Canción con la que nos comprometimos🎶</h2>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/76vZt6tHHMOkewURbnGE05?utm_source=generator&theme=0" width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <div class="seccion">
-    <div class="titulo">NUESTRA HISTORIA</div>
+    <h2>Nuestra historia</h2>
+
     <div class="slider">
-      <button class="flecha izq" onclick="cambiar(-1)">‹</button>
-      <img id="foto" src="novios1.jpg">
-      <button class="flecha der" onclick="cambiar(1)">›</button>
-        <img id="foto" src="novios2.jpg">
+      <img src="novios1.jpg" class="activa">
+      <img src="novios2.jpg">
+    </div>
+
+    <div class="flechas">
+      <span onclick="anterior()">⬅️</span>
+      <span onclick="siguiente()">➡️</span>
     </div>
   </div>
 
   <div class="seccion">
-    <div class="titulo">EVENTOS</div>
-    ⛪ Ceremonia Religiosa
-    Parroquia de Santa Ines
-    <a class="boton" href="https://maps.app.goo.gl/rTa67a7d1kLr1EfH9">Ver ubicación</a>
-    🎉 Recepción Social
-    Local Buenos Aires
-    <a class="boton" href="https://maps.app.goo.gl/93ZWU5Rc6rMjTVMv7">Ver ubicación</a>
+    <h2>Eventos</h2>
+
+    <p><strong>Religioso</strong></p>
+    <p>Parroquía de Santa ines</p>
+    <p> Hora: 07:30 p.m</p>
+    <a class="btn" target="_blank" href="https://maps.app.goo.gl/Pj5rTuTsEeiTdbSo6"></a>
+
+    <p><strong>RecepciónSocial</strong></p>
+    <p>Local Buenos Aires </p>
+    <p> Hora: 09:00 p.m.</p>
+    <a class="btn" target="_blank" href="https://maps.app.goo.gl/ngkx44JEB275qVnq7">Ver ubicación</a>
   </div>
 
   <div class="seccion">
-    <div class="titulo">CONFIRMAR ASISTENCIA</div>
-    <a class="boton" href="#">Confirmar por WhatsApp</a>
+    <h2>Confirmación</h2>
+
+    <a class="btn" target="_blank"
+       href="https://forms.gle/TU_ENLACE_AQUI">
+       Confirmar asistencia
+    </a>
+
+    <a class="btn" target="_blank"
+       href="https://www.google.com/calendar/render?action=TEMPLATE
+       &text=Boda+A%26S
+       &dates=20260516T190000/20260516T235900">
+       Agregar al calendario
+    </a>
   </div>
 
 </div>
 
 <script>
+/* ABRIR INVITACIÓN */
 function abrirInvitacion(){
   document.getElementById("portada").style.display="none";
   document.getElementById("contenido").style.display="block";
 
-  document.querySelectorAll(".seccion").forEach((sec,i)=>{
-    setTimeout(()=>sec.classList.add("activa"), i*500);
+  document.querySelectorAll('.seccion').forEach((sec,i)=>{
+    setTimeout(()=>sec.classList.add('activa'), i*500);
   });
 }
 
-/* -------- CUENTA REGRESIVA -------- */
+/* CONTADOR */
 const fechaEvento = new Date("May 16, 2026 19:00:00").getTime();
-
 setInterval(()=>{
   const ahora = new Date().getTime();
-  const diff = fechaEvento - ahora;
-
-  if(diff <= 0){
-    document.getElementById("contador").innerHTML =
-      "¡Hoy es el gran día! 💍💙";
+  const dif = fechaEvento - ahora;
+  if(dif<=0){
+    contador.innerHTML="¡Hoy es el gran día! 💍";
     return;
   }
-
-  const dias = Math.floor(diff / (1000*60*60*24));
-  const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const minutos = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const segundos = Math.floor((diff % (1000*60)) / 1000);
-
-  document.getElementById("contador").innerHTML = `
-    <strong>${dias}</strong> días · 
-    <strong>${horas}</strong> hrs · 
-    <strong>${minutos}</strong> min · 
-    <strong>${segundos}</strong> seg
-  `;
+  const d = Math.floor(dif/(1000*60*60*24));
+  const h = Math.floor((dif%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((dif%(1000*60*60))/(1000*60));
+  const s = Math.floor((dif%(1000*60))/1000);
+  contador.innerHTML = `${d} días · ${h} hrs · ${m} min · ${s} seg`;
 },1000);
 
-/* -------- SLIDER -------- */
-<script>
-let indice = 0;
-const imagenes = document.querySelectorAll(".slider img");
+/* SLIDER */
+let indice=0;
+const imgs=document.querySelectorAll('.slider img');
 
-function mostrarImagen(n) {
-  imagenes.forEach(img => img.classList.remove("activa"));
-  imagenes[n].classList.add("activa");
+function mostrar(n){
+  imgs.forEach(i=>i.classList.remove('activa'));
+  imgs[n].classList.add('activa');
 }
-
-function siguiente() {
-  indice = (indice + 1) % imagenes.length;
-  mostrarImagen(indice);
+function siguiente(){
+  indice=(indice+1)%imgs.length;
+  mostrar(indice);
 }
-
-function anterior() {
-  indice = (indice - 1 + imagenes.length) % imagenes.length;
-  mostrarImagen(indice);
+function anterior(){
+  indice=(indice-1+imgs.length)%imgs.length;
+  mostrar(indice);
 }
-
-/* Mostrar la primera al cargar */
-mostrarImagen(indice);
 </script>
+
+</body>
+</html>
