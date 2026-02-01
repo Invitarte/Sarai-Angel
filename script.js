@@ -1,4 +1,4 @@
-const weddingDate = new Date("August 15, 2026 18:00:00").getTime();
+const weddingDate = new Date("May 16, 2026 19:00:00").getTime();
 
 setInterval(() => {
   const now = new Date().getTime();
