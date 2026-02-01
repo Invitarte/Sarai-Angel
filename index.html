@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación A & S</title>
 
+<style>
+:root{
+  --azul: #1f2a44;
+  --rosa: #e6c1c7;
+  --gris: #f7f7f7;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background: var(--gris);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--azul);
+}
+
+/* ---------- PORTADA ---------- */
+#portada{
+  width:360px;
+  background:white;
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,.1);
+}
+
+#portada h1{
+  font-size:18px;
+  font-weight:300;
+  margin-bottom:15px;
+}
+
+#iniciales{
+  font-size:42px;
+  font-weight:600;
+  color:var(--azul);
+  margin:10px 0;
+}
+
+#btnVer{
+  background:var(--azul);
+  color:white;
+  border:none;
+  padding:12px 28px;
+  border-radius:30px;
+  font-size:14px;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+/* ---------- CALENDARIO ---------- */
+.calendario{
+  margin-top:25px;
+  font-size:13px;
+}
+
+.cal-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin-top:10px;
+}
+
+.cal-grid div{
+  padding:4px 0;
+}
+
+.especial{
+  color:var(--rosa);
+  font-weight:600;
+}
+
+/* ---------- CONTENIDO ---------- */
+#contenido{
+  display:none;
+  width:360px;
+  background:white;
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 15px 30px rgba(0,0,0,.1);
+}
+
+/* ---------- SECCIONES ---------- */
+.seccion{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(25px);
+  transition:all .8s ease;
+  margin-bottom:20px;
+}
+
+.seccion.activa{
+  max-height:600px;
+  opacity:1;
+  transform:translateY(0);
+}
+
+.titulo{
+  text-align:center;
+  font-weight:600;
+  letter-spacing:1px;
+  margin-bottom:8px;
+  color:var(--azul);
+}
+
+/* ---------- CONTADOR ---------- */
+#contador{
+  text-align:center;
+  font-size:15px;
+}
+
+/* ---------- SLIDER ---------- */
+.slider{
+  position:relative;
+}
+
+.slider img{
+  width:100%;
+  border-radius:18px;
+}
+
+.flecha{
+  position:absolute;
+  top:45%;
+  background:rgba(31,42,68,.7);
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:32px;
+  height:32px;
+  cursor:pointer;
+}
+
+.izq{ left:8px; }
+.der{ right:8px; }
+
+/* ---------- BOTONES ---------- */
+.boton{
+  background:var(--rosa);
+  color:var(--azul);
+  text-align:center;
+  padding:10px;
+  border-radius:25px;
+  margin-top:8px;
+  text-decoration:none;
+  display:block;
+  font-size:14px;
+  font-weight:500;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+<div id="portada">
+  <h1>“El amor nos trajo hasta aquí”</h1>
+  <div id="iniciales">A & S</div>
+  <button id="btnVer" onclick="abrirInvitacion()">Ver invitación</button>
+
+  <div class="calendario">
+    <strong>Mayo 2026</strong>
+    <div class="cal-grid">
+      <div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
+      <div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
+      <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+      <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+      <div class="especial">❤️ 16</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO -->
+<div id="contenido">
+
+  <div class="seccion">
+    <div class="titulo">NOS CASAMOS</div>
+  </div>
+
+  <div class="seccion">
+    <div class="titulo">CUENTA REGRESIVA</div>
+    <div id="contador"></div>
+  </div>
+
+  <div class="seccion">
+    <div class="titulo">MÚSICA</div>
+    <audio controls>
+      <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="seccion">
+    <div class="titulo">NUESTRA HISTORIA</div>
+    <div class="slider">
+      <button class="flecha izq" onclick="cambiar(-1)">‹</button>
+      <img id="foto" src="foto1.jpg">
+      <button class="flecha der" onclick="cambiar(1)">›</button>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="titulo">EVENTOS</div>
+    ⛪ Ceremonia Religiosa
+    <a class="boton" href="#">Ver ubicación</a>
+    🎉 Recepción Social
+    <a class="boton" href="#">Ver ubicación</a>
+  </div>
+
+  <div class="seccion">
+    <div class="titulo">CONFIRMAR ASISTENCIA</div>
+    <a class="boton" href="#">Confirmar por WhatsApp</a>
+  </div>
+
+</div>
+
+<script>
+function abrirInvitacion(){
+  document.getElementById("portada").style.display="none";
+  document.getElementById("contenido").style.display="block";
+  document.querySelectorAll(".seccion").forEach((s,i)=>{
+    setTimeout(()=>s.classList.add("activa"), i*500);
+  });
+}
+
+/* CONTADOR */
+const fecha = new Date("May 16, 2026 00:00:00").getTime();
+setInterval(()=>{
+  const ahora = new Date().getTime();
+  const dias = Math.floor((fecha-ahora)/(1000*60*60*24));
+  document.getElementById("contador").innerText =
+    dias + " días para nuestro gran día 💙";
+},1000);
+
+/* SLIDER */
+let fotos=["foto1.jpg","foto2.jpg","foto3.jpg"];
+let i=0;
+function cambiar(d){
+  i=(i+d+fotos.length)%fotos.length;
+  document.getElementById("foto").src=fotos[i];
+}
+</script>
+
+</body>
+</html>
