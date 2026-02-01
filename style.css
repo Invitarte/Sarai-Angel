@@ -229,15 +229,3 @@ body {
   font-weight: bold;
 }
 
-.contenido {
-  display: none;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-}
-
-.contenido h2 {
-  color: #8b0000;
-}
