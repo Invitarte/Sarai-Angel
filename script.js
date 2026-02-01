@@ -37,11 +37,4 @@ function prevImage() {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage(currentIndex);
 }
-function enterInvitation() {
-  document.getElementById("welcome").classList.remove("active");
-  document.getElementById("invitation").classList.add("active");
-}
-function abrirInvitacion() {
-  document.getElementById("sobre").style.display = "none";
-  document.getElementById("contenido").style.display = "block";
-}
+
